@@ -5,7 +5,9 @@ using namespace std;
 /*
     # We can also create an object of a class inside heap memory using pointer and new keyword.
 */
-
+/**
+ * 
+ 
 class Circle {
 
     public:
@@ -18,6 +20,7 @@ class Circle {
         }
 
 };
+*/
 
 int main() {
 
