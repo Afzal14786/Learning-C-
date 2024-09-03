@@ -18,10 +18,60 @@ class Derived : public Base {
         }
 };
 
+class BasicCar {
+    public:
+        virtual void start() {
+            cout << "The Car Is Started." << endl;
+        }
+
+        virtual void end() {
+            cout << "The Car Is Off." << endl;
+        }
+};
+
+class AdvanceCar : public BasicCar {
+    public:
+        void start() {
+            cout << "The Advance Car Is Started.";
+        }
+
+        void end() {
+            cout << "The Advance Car Is Off." << endl;
+        }
+
+        void mediaPlayer() {
+            cout << "Starting The Media Player." << endl;
+        }
+};
+
 int main() {
     
-    Base *base_class = new Derived();
-    base_class->fun();
+    // Base *base_class = new Derived();
+    // base_class->fun();
+
+    BasicCar *bcar = new AdvanceCar();
+    bcar->start();
+    bcar->end();
+    
+    /**
+     *      Error After Running The Below Written Code.
+     * 
+     * It is not allowed to create a pointer of advance class and assign it to the object of base class.
+     * 
+     * afzal@root:~/VSCodes/C++ By Abdul Sir/OOPs/Inheritance$ g++ pointerToClass.cpp 
+        pointerToClass.cpp: In function ‘int main()’:
+        pointerToClass.cpp:56:35: error: invalid conversion from ‘BasicCar*’ to ‘AdvanceCar*’ [-fpermissive]
+        56  |     AdvanceCar *ad = new BasicCar();
+            |                                   ^
+            |                                   |
+            |                                   BasicCar*
+        afzal@root:~/VSCodes/C++ By Abdul Sir/OOPs/Inheritance$ 
+
+     */
+    AdvanceCar *ad = new BasicCar();
+    ad->start();
+    ad->end();
+    ad->mediaPlayer();
 
     return 0;
 }
